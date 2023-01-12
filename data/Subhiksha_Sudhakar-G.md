@@ -1,11 +1,16 @@
-If we are adding message strings to require statements, we can reduce the gas by limiting the string length to 32 bytes.<br>
+**Use  unchecked{++i} where it is not possible to overflow i.e., in loops**
 
-[Cash.sol#38](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/token/Cash.sol#38)
-[CCashDelegate.sol#30](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CCashDelegate.sol#30)
-[CTokenDelegate.sol#32](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cToken/CTokenDelegate.sol#32)
-[CTokenDelegate.sol#47](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cToken/CTokenDelegate.sol#47)
-[CashKYCSender.sol#65](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/token/CashKYCSender.sol#65)
-[CashKYCSender.sol#72](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/token/CashKYCSender.sol#72)
-[OndoPriceOracle.sol#122](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/OndoPriceOracle.sol#122)
+The default "checked" behavior costs more gas when calculating, because under-the-hood checks are implemented in solidity as a series of opcodes that, prior to performing the actual arithmetic, check for under/overflow and revert if it is detected.
 
+In the case of for loops, there is already a condition which prevents under/overflow. Hence, we can use unchecked{} to ignore the internal checks which will save gas in each iteration.
+
+[CashFactory.sol#L127](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashFactory.sol#L127)
+[CashKYCSenderFactory.sol#L137](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashKYCSenderFactory.sol#L137)
+[CashKYCSenderReceiverFactory.sol#L137](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashKYCSenderReceiverFactory.sol#L137)
+[KYCRegistry.sol#L163](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/kyc/KYCRegistry.sol#L163)
+[KYCRegistry.sol#L180](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/kyc/KYCRegistry.sol#L180)
+[CashManager.sol#L750](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol#L750)
+[CashManager.sol#L786](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol#L786)
+[CashManager.sol#L933](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol#L933)
+[CashManager.sol#L961](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol#L961)
 

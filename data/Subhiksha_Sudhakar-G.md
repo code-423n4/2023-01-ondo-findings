@@ -1,4 +1,4 @@
-If we are adding message strings to require statements, we can make them cheaper by limiting the string length to 32 bytes.<br>
+If we are adding message strings to require statements, we can reduce the gas by limiting the string length to 32 bytes.<br>
 
 [Cash.sol#38](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/token/Cash.sol#38)
 [CCashDelegate.sol#30](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CCashDelegate.sol#30)

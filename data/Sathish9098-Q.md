@@ -48,7 +48,12 @@
 
       4: import "./CTokenCash.sol";
 
+[FILE : 2023-01-ondo/contracts/lending/tokens/cCash/CTokenInterfacesModifiedCash.sol ](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenInterfacesModifiedCash.sol)
 
+       import "contracts/lending/tokens/cErc20Delegate/ComptrollerInterface.sol";
+       import "contracts/lending/tokens/cErc20Delegate/InterestRateModel.sol";
+       import "contracts/lending/tokens/cErc20Delegate/EIP20NonStandardInterface.sol";
+       import "contracts/lending/tokens/cErc20Delegate/ErrorReporter.sol";
 
 ##
 
@@ -99,9 +104,28 @@ Apart from these, there are several minor bug fixes and improvements
 
        2:  pragma solidity ^0.8.10;
 
+[FILE : 2023-01-ondo/contracts/lending/tokens/cCash/CTokenInterfacesModifiedCash.sol ](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenInterfacesModifiedCash.sol)
+
+      2:  pragma solidity ^0.8.10;
+
 [FILE: 2023-01-ondo/contracts/cash/token/Cash.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/token/Cash.sol)
 
        16:  pragma solidity 0.8.16;
+
+##
+
+## [L-3] DECIMALS() NOT PART OF ERC20 STANDARD
+
+ decimals() is not part of the official ERC20 standard and might fail for tokens that do not implement it. While in practice it is very unlikely, as usually most of the tokens implement it, this should still be considered as a potential issue.
+
+[FILE : 2023-01-ondo/contracts/cash/CashManager.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol)
+
+         decimalsMultiplier =
+        10 **
+        (IERC20Metadata(_cash).decimals() -
+        IERC20Metadata(_collateral).decimals());
+  
+       
 
 # NON-CRITICAL FINDINGS
 
@@ -134,6 +158,10 @@ The latest solidity version is 0.8.17 . This fixes an important bug, makes overf
 [FILE: 2023-01-ondo/contracts/cash/token/Cash.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/token/Cash.sol)
 
        16:  pragma solidity 0.8.16;
+
+[FILE : 2023-01-ondo/contracts/lending/tokens/cCash/CTokenInterfacesModifiedCash.sol ](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenInterfacesModifiedCash.sol)
+
+      2:  pragma solidity ^0.8.10;
 
 ##
 
@@ -179,6 +207,70 @@ While it doesn’t save any gas because the compiler knows that developers often
            );
  
            bytes32 public constant REGISTRY_ADMIN = keccak256("REGISTRY_ADMIN");
+
+[FILE : 2023-01-ondo/contracts/cash/CashManager.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol)
+
+          122 :  bytes32 public constant MANAGER_ADMIN = keccak256("MANAGER_ADMIN");
+
+          123:   bytes32 public constant PAUSER_ADMIN = keccak256("PAUSER_ADMIN");
+
+          124:   bytes32 public constant SETTER_ADMIN = keccak256("SETTER_ADMIN");
+
+##
+
+## [NC-3]  Shorter inheritance list
+
+[FILE : 2023-01-ondo/contracts/cash/CashManager.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol)
+
+       contract CashManager is
+       ICashManager,
+       IMulticall,
+       AccessControlEnumerable,
+      KYCRegistryClientConstructable,
+      Pausable,
+      ReentrancyGuard
+
+##
+
+## [NC-4]  NON-LIBRARY/INTERFACE FILES SHOULD USE FIXED COMPILER VERSIONS, NOT FLOATING ONES (20)
+
+##
+
+## [NC-5]  TYPOS
+
+[FILE : 2023-01-ondo/contracts/cash/CashManager.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol)
+
+     /// @audit  BPS_DENOMINAOR   => BPS_DENOMINATOR
+
+       429:  *      BPS_DENOMINAOR (say 9999) and `mintFee` = 1,
+
+[FILE: 2023-01-ondo/contracts/lending/tokens/cCash/CTokenCash.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenCash.sol)
+
+         /// @audit  checkpointed =>  check pointed
+
+       391:    * @dev This calculates interest accrued from the last checkpointed block
+
+##
+
+## [NC-6]  LINE WIDTH
+
+Keep line width to max 120 characters for better readability.
+
+[FILE: 2023-01-ondo/contracts/lending/tokens/cCash/CTokenCash.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenCash.sol)
+
+   573:  * @param redeemTokensIn The number of cTokens to redeem into underlying (only one of redeemTokensIn or redeemAmountIn may be non-zero)
+   574:  * @param redeemAmountIn The number of underlying tokens to receive from redeeming cTokens (only one of redeemTokensIn or redeemAmountIn may be non-zero)
+
+
+
+
+
+
+
+
+    
+
+
 
 
 

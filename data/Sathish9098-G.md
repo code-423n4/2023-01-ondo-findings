@@ -31,6 +31,22 @@ The unchecked keyword is new in solidity version 0.8.0, so this only applies to 
 
       961:   for (uint256 i = 0; i < exCallData.length; ++i) {
 
+## [GAS-9]  USE REQUIRE INSTEAD OF ASSERT
+
+The assert() and require() functions are a part of the error handling aspect in Solidity. Solidity makes use of state-reverting error handling exceptions. This means all changes made to the contract on that call or any sub-calls are undone if an error is thrown. It also flags an error.
+
+They are quite similar as both check for conditions and if they are not met, would throw an error.
+
+The big difference between the two is that the assert() function when false, uses up all the remaining gas and reverts all the changes made.
+
+Meanwhile, a require() function when false, also reverts back all the changes made to the contract but does refund all the remaining gas fees we offered to pay. This is the most common Solidity function used by developers for debugging and error handling
+
+[CashFactory.sol-97](https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/factory/CashFactory.sol#L97)
+
+[CashKYCSenderFactory.sol-106](https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/factory/CashKYCSenderFactory.sol#L106)
+
+[CashKYCSenderReceiverFactory.sol-106](https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/factory/CashKYCSenderReceiverFactory.sol#L106)
+
 ##
 
 ### [GAS-2] instead of using operator && on single require  . Using double REQUIRE  checks can save more gas. After splitting require statement its possible save 8 gas
@@ -181,6 +197,14 @@ Such as uint8, are only more effective when multiple variables can be stored in 
     );
     _;
     }
+
+##
+
+
+
+
+
+
 
 
 

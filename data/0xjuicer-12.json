@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "0xjuicer",
+  "risk": "2",
+  "title": "User can be added back to KYCed list after being removed using removeKYCAddresses",
+  "issueId": 12,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/12"
+}

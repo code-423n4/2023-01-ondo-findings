@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "MHKK33",
+  "risk": "3",
+  "title": "addKYCAddressViaSignature function does not check if the user address is on the sanctions list before granting them KYC status",
+  "issueId": 19,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/19"
+}

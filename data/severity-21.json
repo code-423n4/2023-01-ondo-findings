@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "severity",
+  "risk": "3",
+  "title": "Function getAccRewardPerToken() returns value of _accRewardsPerToken in RAY format, while it should be in WAD format",
+  "issueId": 21,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/21"
+}

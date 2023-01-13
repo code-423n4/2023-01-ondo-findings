@@ -1,0 +1,1 @@
+Adding interfaces at lines `44` in contract `contracts/cash/kyc/KYCRegistry.sol` and line `57` in contract `contracts/cash/kyc/KYCRegistry.sol` does not adhere to EIP-165, unsafe interface addition. Can be fixed with `@openzeppelin/contracts/utils/introspection/ERC165.sol` and `@openzeppelin/contracts/utils/introspection/ERC165Checker.sol`. 

@@ -1,0 +1,2 @@
+L01. The upper limit for a fee is not specified
+`CashManager` contract allows setting any amount of fee without an upper limit, which could lead to unexpected behavior from the users' perspective. Also, an incorrect fee could be set by mistake (for a short period of time) using `setFeeRecipient` method and affect currently active users of the platform. 

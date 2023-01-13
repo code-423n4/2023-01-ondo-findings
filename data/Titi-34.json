@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "Titi",
+  "risk": "2",
+  "title": "[DoS] Requesting a redemption for 1 token causes completeRedemptions to revert.",
+  "issueId": 34,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/34"
+}

@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "0xbrett8571",
+  "risk": "3",
+  "title": "High-Risk Single Point of Failure and Critical Lack of Access Control Vulnerability in CCashDelegate Smart Contract",
+  "issueId": 43,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/43"
+}

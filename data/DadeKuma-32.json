@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "DadeKuma",
+  "risk": "2",
+  "title": "EpochDuration set to zero prevents all operations that need epoch updates",
+  "issueId": 32,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/32"
+}

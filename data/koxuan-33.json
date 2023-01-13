@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "koxuan",
+  "risk": "2",
+  "title": "oracle price from Chainlink might be stale due to all assets price feeds sharing the same maxChainlinkOracleTimeDelay",
+  "issueId": 33,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/33"
+}

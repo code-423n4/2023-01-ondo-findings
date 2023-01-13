@@ -1,0 +1,1 @@
+`CashManager.pause` requires `PAUSER_ROLE`, while `CashManager.unpause` requires a `MANAGER_ROLE`. Looks like a refactoring mistake.

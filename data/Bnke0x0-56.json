@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "Bnke0x0",
+  "risk": "3",
+  "title": "sweepToken and doTransferIn ERC20 return values not checked",
+  "issueId": 56,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/56"
+}

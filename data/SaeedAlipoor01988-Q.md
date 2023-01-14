@@ -38,3 +38,8 @@ In the below function,
 https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L241
 user comes and will claim for airdrop for a certain epoch, it’s not necessary to wait for the epoch to get end?
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+at the below function and line, we are getting the price of cToken Underlying. but we need to be sure that this price is updated recently and that we are not using the old price so we need to create if condition related to updatedAt for oracle price, if the condition is ok, then use the price. or we can use this condition directly in the price oracle contract, and before sending any price out! check the updatedAt of price.
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/CompoundLens.sol#L156

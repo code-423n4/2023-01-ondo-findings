@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "EA",
+  "risk": "3",
+  "title": "Lack of Access Control for Minter Role",
+  "issueId": 45,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/45"
+}

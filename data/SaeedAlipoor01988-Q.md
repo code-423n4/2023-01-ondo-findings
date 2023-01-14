@@ -47,3 +47,11 @@ but we need to be sure that this price is updated recently and that we are not u
 
 please check below link:
 https://code4rena.com/reports/2022-08-olympus/#m-24-naz-m1-chainlinks-latestrounddata-might-return-stale-results
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Not verified input. External/public function parameters should be validated to make sure the input values are correct. Otherwise if not given the right input it can mistakenly lead to a loss of user funds.
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/JumpRateModelV2.sol#L59
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/JumpRateModelV2.sol#L171
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/JumpRateModelV2.sol#L83

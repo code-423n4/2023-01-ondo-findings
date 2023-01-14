@@ -68,3 +68,11 @@ Recommended Mitigation Steps
 
 Add code like this;
 if (cToken== address(0)) revert ADDRESS_ZERO();
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+in the contract CCash.sol and line below, we use initialize function to initialize data for the new money market. but this function has no access limit and does not include a modifier to call only once.
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cCash/CCash.sol#L30
+
+you can add initialized variable to the contract, and at the first call, after initialize data for the new money market, make initialized variable true.

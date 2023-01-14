@@ -57,3 +57,14 @@ Not verified input. External/public function parameters should be validated to m
 https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/JumpRateModelV2.sol#L59
 https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/JumpRateModelV2.sol#L171
 https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/JumpRateModelV2.sol#L83
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+0 address control should be done in these parts;
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/OndoPriceOracle.sol#L92
+
+Recommended Mitigation Steps
+
+Add code like this;
+if (cToken== address(0)) revert ADDRESS_ZERO();

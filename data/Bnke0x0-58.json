@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "Bnke0x0",
+  "risk": "3",
+  "title": "CashKYCSender transfers are broken due to wrong delegates accounting on transfers",
+  "issueId": 58,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/58"
+}

@@ -185,7 +185,7 @@ Include the `@return` argument in the NatSpec comments.
 
 ## [NC-04] Function writing does not comply with the `Solidity Style Guide`
 
-Order of Functions; ordering helps readers identify which functions they can call and to find the constructor and fallback definitions easier. But there are contracts in the project that do not comply with this.
+Ordering helps readers identify which functions they can call and to find the constructor and fallback definitions easier. But there are contracts in the project that do not comply with this.
 
 Functions should be grouped according to their visibility and ordered:
 

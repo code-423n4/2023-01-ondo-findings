@@ -16,8 +16,9 @@
 | [LOW&#x2011;11](#LOW&#x2011;11) | TransferOwnership Should Be Two Step | 3 |
 | [LOW&#x2011;12](#LOW&#x2011;12) | No Storage Gap For Upgradeable Contracts | 4 |
 | [LOW&#x2011;13](#LOW&#x2011;13) | Use `safeTransferOwnership` instead of `transferOwnership` function | 3 |
+| [LOW&#x2011;14](#LOW&#x2011;14) | Missing Non Reentrancy Modifiers | 1 |
 
-Total: 66 contexts over 13 issues
+Total: 67 contexts over 14 issues
 
 ### Non-critical Issues
 | |Issue|Contexts|
@@ -750,6 +751,28 @@ Use <a href="https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/
 ```
 
 
+### <a href="#Summary">[LOW&#x2011;14]</a><a name="LOW&#x2011;14"> Missing Non Reentrancy Modifiers
+
+The following functions are missing reentrancy modifier although some other public/external functions does use reentrancy modifer. Even though I did not find a way to exploit it, it seems like those functions should have the nonReentrant modifier as the other functions have it as well.
+
+#### <ins>Proof Of Concept</ins>
+
+```solidity
+function completeRedemptions(
+    address[] calldata redeemers,
+    address[] calldata refundees,
+    uint256 collateralAmountToDist,
+    uint256 epochToService,
+    uint256 fees
+  ) external override updateEpoch onlyRole(MANAGER_ADMIN) {
+```
+
+https://github.com/code-423n4/2023-01-ondo/tree/main/contracts/cash\CashManager.sol#L707
+
+
+
+#### <ins>Recommended Mitigation Steps</ins>
+Add reentrancy modifiers
 
 ## Non Critical Issues
 

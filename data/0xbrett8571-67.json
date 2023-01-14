@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "0xbrett8571",
+  "risk": "3",
+  "title": "Unrestricted Function Access Vulnerability in ICashManager Smart Contract.",
+  "issueId": 67,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/67"
+}

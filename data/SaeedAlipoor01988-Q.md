@@ -40,6 +40,10 @@ user comes and will claim for airdrop for a certain epoch, it’s not necessary 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-at the below function and line, we are getting the price of cToken Underlying. but we need to be sure that this price is updated recently and that we are not using the old price so we need to create if condition related to updatedAt for oracle price, if the condition is ok, then use the price. or we can use this condition directly in the price oracle contract, and before sending any price out! check the updatedAt of price.
-
+at the below function and line, we are getting the price of cToken Underlying. 
 https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/CompoundLens.sol#L156
+
+but we need to be sure that this price is updated recently and that we are not using the old price so we need to create if condition related to updatedAt for oracle price, if the condition is ok, then use the price. or we can use this condition directly in the price oracle contract, and before sending any price out! check the updatedAt of price.
+
+please check below link:
+https://code4rena.com/reports/2022-08-olympus/#m-24-naz-m1-chainlinks-latestrounddata-might-return-stale-results

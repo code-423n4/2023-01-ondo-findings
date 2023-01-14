@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "kodyvim",
+  "risk": "2",
+  "title": "admin cannot set max fee of 100% because of incorrect logical operation",
+  "issueId": 54,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/54"
+}

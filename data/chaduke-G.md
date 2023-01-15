@@ -28,3 +28,11 @@ unchecked{
 }
 
 ```
+
+G4. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cToken/CTokenModified.sol#L1284
+Encoding it inside unchecked can save gas - underflow is impossible due to previous check.
+```
+unchecked{
+       totalReservesNew = totalReserves - reduceAmount;
+}
+```

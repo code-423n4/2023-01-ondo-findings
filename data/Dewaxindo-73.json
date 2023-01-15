@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "Dewaxindo",
+  "risk": "3",
+  "title": "Integer overflow: Some functions in `cErc20ModifiedDelegator.sol` contract may be vulnerable to integer overflow attacks.",
+  "issueId": 73,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/73"
+}

@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "bin2chen",
+  "risk": "2",
+  "title": "setPendingRedemptionBalance() may cause the user's cash token to be lost",
+  "issueId": 82,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/82"
+}

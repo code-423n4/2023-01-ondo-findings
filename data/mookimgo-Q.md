@@ -79,6 +79,6 @@ this assign does nothing, can be removed to save gas and avoid misleading, as th
 
 # `setFeeRecipient` and `setAssetRecipient` in CashManager does not check address vadility
 
-These functions does not check whether the address is a valid address, which may pose a risk of setting wrong address.
+These functions does not check whether the address is a valid address, and do not check whether it's zero address, which may pose a risk of setting wrong address.
 
 **Suggestion**: add pending variables like `pendingFeeRecipient`, and add claimPending functions like `becomeFeeRecipient`, to verify that the target address can indeed manage the asset ( can call this function ).

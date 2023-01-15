@@ -1,5 +1,5 @@
 ## Missing minter role granting
-In `deployCash()` of CashFactory.sol, `cashProxied.grantRole()` did not grant `MINTER_ROLE` to `guardian` address. Although this can later be separately excuted by the guardian who is now the default admin, consider having this specific role granting included in this atomic call or having it commented in the NatSpec the reason for this omission.
+In `deployCash()` of CashFactory.sol, `cashProxied.grantRole()` did not grant `MINTER_ROLE` to `guardian` address. Similarly, in `deployCashKYCSender()` of CashKYCSenderFactory.sol, `cashKYCSenderProxied.` did not grant `MINTER_ROLE` to `guardian` address either. (Note: The same instance also goes with `deployCashKYCSenderReceiver()` of CashKYCSenderReceiverFactory.sol). Although this can later be separately executed by the guardian who is now the default admin, consider having this specific role granting included in the atomic function call or having it commented in the NatSpec the reason for this omission.
 
 [File: CashFactory.sol#L75-L110](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashFactory.sol#L75-L110)
 
@@ -7,6 +7,66 @@ In `deployCash()` of CashFactory.sol, `cashProxied.grantRole()` did not grant `M
     cashProxied.grantRole(DEFAULT_ADMIN_ROLE, guardian);
     cashProxied.grantRole(PAUSER_ROLE, guardian);
 +    cashProxied.grantRole(MINTER_ROLE, guardian);
+```
+
+[File: CashKYCSenderFactory.sol#L98-L99](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashKYCSenderFactory.sol#L98-L99)
+
+```diff
+    cashKYCSenderProxied.grantRole(DEFAULT_ADMIN_ROLE, guardian);
+    cashKYCSenderProxied.grantRole(PAUSER_ROLE, guardian);
++    cashKYCSenderProxied.grantRole(MINTER_ROLE, guardian);
+```
+[File: CashKYCSenderReceiverFactory.sol#L98-L99](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashKYCSenderReceiverFactory.sol#L98-L99)
+
+```diff
+    cashKYCSenderReceiverProxied.grantRole(DEFAULT_ADMIN_ROLE, guardian);
+    cashKYCSenderReceiverProxied.grantRole(PAUSER_ROLE, guardian);
++    cashKYCSenderReceiverProxied.grantRole(MINTER_ROLE, guardian);
+```
+## Use of deprecated file
+As denoted in [OpenZeppelin's ERC20PresetMinterPauser.sol](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/presets/ERC20PresetMinterPauser.sol#L26) as well as [Ondo Finance's ERC20PresetMinterPauserUpgradeable.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/external/openzeppelin/contracts-upgradeable/token/ERC20/ERC20PresetMinterPauserUpgradeable.sol#L27):
+
+This particular file is now deprecated in favor of [https://wizard.openzeppelin.com/[Contracts Wizard]](https://wizard.openzeppelin.com/). 
+
+Specifically, `cashProxied.initialize(name, ticker)` is invoked in `deployCash()` of CashFactory.sol. This leads to calling the parental `initialize()` in ERC20PresetMinterPauserUpgradeable.sol, which is discouraged.
+
+[File: CashFactory.sol#L87](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashFactory.sol#L87)
+
+```solidity
+    cashProxied.initialize(name, ticker);
+```
+[File: ERC20PresetMinterPauserUpgradeable.sol#L36-L42](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/external/openzeppelin/contracts-upgradeable/token/ERC20/ERC20PresetMinterPauserUpgradeable.sol#L36-L42)
+
+```solidity
+  function initialize(string memory name, string memory symbol)
+    public
+    virtual
+    initializer
+  {
+    __ERC20PresetMinterPauser_init(name, symbol);
+  }
+```
+Likewise, cashKYCSenderProxied.initialize(name, ticker, registry, kycRequirementGroup) is invoked in `deployCashKYCSender()` of CashKYCSenderFactory.sol, leading to the parental call on `__ERC20PresetMinterPauser_init(name, symbol)` in ERC20PresetMinterPauserUpgradeable.sol. (Note: An identical instance also happens on `deployCashKYCSenderReceiver()` of CashKYCSenderReceiverFactory.sol.)
+
+[File: CashKYCSenderFactory.sol#L91-L96](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashKYCSenderFactory.sol#L91-L96)
+
+```solidity
+    cashKYCSenderProxied.initialize(
+      name,
+      ticker,
+      registry,
+      kycRequirementGroup
+    );
+```
+[File: CashKYCSender.sol#L46-L54](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/token/CashKYCSender.sol#L46-L54)
+
+```solidity
+    __ERC20PresetMinterPauser_init(name, symbol);
+```
+[File: ERC20PresetMinterPauserUpgradeable.sol#L53-L60](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/external/openzeppelin/contracts-upgradeable/token/ERC20/ERC20PresetMinterPauserUpgradeable.sol#L53-L60)
+
+```solidity
+  function __ERC20PresetMinterPauser_init(
 ```
 ## Inadequate NatSpec
 Solidity contracts can use a special form of comments, i.e., the Ethereum Natural Language Specification Format (NatSpec) to provide rich documentation for functions, return variables and more. Please visit the following link for further details:
@@ -111,10 +171,17 @@ https://docs.soliditylang.org/en/v0.8.7/control-structures.html#error-handling-a
 
 Consider having account existence checked prior to making `call` where possible. 
 
-Here are the instances entailed:
+Here are the three instances unanimously using the same/identical function logic:
 
-[File: CashFactory.sol#L128](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashFactory.sol#L128)
+[File: CashFactory.sol#L128-L133](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashFactory.sol#L128-L133)
+[File: CashKYCSenderFactory.sol#L137-L142](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashKYCSenderFactory.sol#L137-L142)
+[File: CashKYCSenderReceiverFactory.sol#L137-L143](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashKYCSenderReceiverFactory.sol#L137-L143)
 
 ```solidity
+    for (uint256 i = 0; i < exCallData.length; ++i) {
       (bool success, bytes memory ret) = address(exCallData[i].target).call{
+        value: exCallData[i].value
+      }(exCallData[i].data);
+      require(success, "Call Failed");
+      results[i] = ret;
 ```

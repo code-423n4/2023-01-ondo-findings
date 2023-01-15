@@ -69,3 +69,6 @@ Currently, there is no function to change owner, only constructor's parameter ca
 
 Suggest: add a setOwner function to change owner.
 
+# `currentEpoch = currentEpoch;` can be removed from CashManager's constructor
+
+this assign does nothing, can be removed to save gas and avoid misleading

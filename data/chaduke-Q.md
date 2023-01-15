@@ -7,3 +7,12 @@ require(
     );
 ```
 
+GA2. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cToken/CTokenModified.sol#L650
+We need to track the actual doTransferOut() since their might be a discrepancy, either we revert when there is a discrepancy, or we need to let the caller know the slippage and let the caller decides what to do. 
+
+```
+actualRedeemAmount = doTransferOut(redeemer, redeemAmount);
+
+```
+
+

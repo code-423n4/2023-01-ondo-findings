@@ -17,4 +17,20 @@ actualRedeemAmount = doTransferOut(redeemer, redeemAmount);
 GA3. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cToken/CTokenModified.sol#L795
 The documentation should be "/* If repayAmount == max, repayAmount = accountBorrows */
 
+GA4: 
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cCash/CTokenCash.sol#L767-L771
+repayBorrowFresh() will revert when the payer will pay more than the borrower owed (repayAmount > accountBorrowsPrev). This is not necessary. The revert is caused by underflow in the following line
+```
+uint accountBorrowsNew = accountBorrowsPrev - actualRepayAmount;
+```
+To address this issue, we can revise the code of calculating ``repayAmountFinal`` as follows:
+```
+uint repayAmountFinal = repayAmount > accountBorrowsPrev
+      ? accountBorrowsPrev
+      : repayAmount;
+```
+
+
+
+
 

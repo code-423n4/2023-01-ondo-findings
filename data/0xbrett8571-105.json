@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "0xbrett8571",
+  "risk": "3",
+  "title": "Zero Address Check Vulnerability in CashFactory Contract",
+  "issueId": 105,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/105"
+}

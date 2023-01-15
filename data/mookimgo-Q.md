@@ -26,7 +26,7 @@ Suggest: remove sender index and add kycRequirementGroup index
 
 Considering we want to search KYC'ed users for a specific kycRequirementGroup.
 
-Using eth_getLogs will can not do that, as it can only specify `topics0, topics1, ...`. In current design, user is placed before kycRequirementGroup.
+Using eth_getLogs will can not do that, as it can only specify `topics0, topics1, ...` in order (cannot search by topics2 without topics1), and in current design, user is placed before kycRequirementGroup.
 
 Suggest: change to:
 

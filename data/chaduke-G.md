@@ -39,3 +39,13 @@ unchecked{
 
 G5. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cCash/CTokenCash.sol#L624-L626
 This check should be performed earlier (at L588) to save gas.
+
+G6. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cCash/CTokenCash.sol#L641
+Enclosing this line into unchecked can save gas as underflow is impossible due to previous check.
+```
+unchecked{
+totalSupply = totalSupply - redeemTokens;
+
+}
+```
+

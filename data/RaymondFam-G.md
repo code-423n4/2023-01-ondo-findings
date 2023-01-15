@@ -25,6 +25,8 @@ All other instances entailed:
 
 [File: CashKYCSenderReceiver.sol#L63-L66](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/token/CashKYCSenderReceiver.sol#L63-L66)
 
+[File: CashKYCSender.sol#L63-L66](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/token/CashKYCSender.sol#L63-L66)
+
 ## Use of named returns for local variables saves gas
 You can have further advantages in term of gas cost by simply using named return values as temporary local variable.
 
@@ -51,9 +53,11 @@ For instance, the code block below may be refactored as follows:
 ## Use `break` or `continue` in for loop 
 For loop entailing large array with reverting logic should incorporate `break` or `continue` to cater for element(s) failing to get through the iteration(s). This will tremendously save gas on instances where the loop specifically fails to execute at the end of the iterations.
 
-Here is an instance entailed:
+Here are the three instances unanimously using the same/identical function logic:
 
 [File: CashFactory.sol#L123-L134](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashFactory.sol#L123-L134) 
+[File: CashKYCSenderFactory.sol#L133-L144](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashKYCSenderFactory.sol#L133-L144)
+[File: CashKYCSenderReceiverFactory.sol#L133-L143](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashKYCSenderReceiverFactory.sol#L133-L143)
 
 ```solidity
   function multiexcall(

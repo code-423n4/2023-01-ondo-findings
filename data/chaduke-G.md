@@ -48,4 +48,6 @@ totalSupply = totalSupply - redeemTokens;
 
 }
 ```
+G7. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cCash/CTokenCash.sol#L246-L248
+Just use ``block.number`` directly without wrapping it as a function would save much gas since function call causes more gas.
 

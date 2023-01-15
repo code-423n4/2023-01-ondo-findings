@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "peanuts",
+  "risk": "2",
+  "title": "Request Redemption in CashManager() should not be paused",
+  "issueId": 72,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/72"
+}

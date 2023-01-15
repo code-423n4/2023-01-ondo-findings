@@ -51,3 +51,14 @@ Suggest: change to:
     address[] addresses
   );
 ```
+
+# sanctionsList in KYCRegistry should also be set as a constant 0x40C57923924B5c5c5455c48D93317139ADDaC8fb
+
+As cErc20ModifiedDelegator.sol has used this address constant:
+
+```
+  ISanctionsList public constant sanctionsList =
+    ISanctionsList(0x40C57923924B5c5c5455c48D93317139ADDaC8fb);
+````
+
+There seems no needs to set a constructor parameter, suggest changing https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/kyc/KYCRegistry.sol#L48-L49 to above constant define and remove constructor parameter `_sanctionsList `.

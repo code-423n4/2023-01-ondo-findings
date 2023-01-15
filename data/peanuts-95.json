@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "peanuts",
+  "risk": "2",
+  "title": "The decimals calculated in mint limit in CashManager.sol is incorrect.",
+  "issueId": 95,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/95"
+}

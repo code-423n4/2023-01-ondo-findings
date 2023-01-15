@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "0xbrett8571",
+  "risk": "2",
+  "title": "Missing check for multisignature contract or guardian contract in constructor",
+  "issueId": 106,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/106"
+}

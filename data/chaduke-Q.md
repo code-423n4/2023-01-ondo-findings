@@ -14,5 +14,7 @@ We need to track the actual doTransferOut() since their might be a discrepancy, 
 actualRedeemAmount = doTransferOut(redeemer, redeemAmount);
 
 ```
+GA3. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cToken/CTokenModified.sol#L795
+The documentation should be "/* If repayAmount == max, repayAmount = accountBorrows */
 
 

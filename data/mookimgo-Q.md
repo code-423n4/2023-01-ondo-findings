@@ -62,3 +62,10 @@ As cErc20ModifiedDelegator.sol has used this address constant:
 ````
 
 There seems no needs to set a constructor parameter, suggest changing https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/kyc/KYCRegistry.sol#L48-L49 to above constant define and remove constructor parameter `_sanctionsList `.
+
+# JumpRateModelV2 should add a setOwner function
+
+Currently, there is no function to change owner, only constructor's parameter can set, which may be un-desired.
+
+Suggest: add a setOwner function to change owner.
+

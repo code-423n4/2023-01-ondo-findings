@@ -41,3 +41,10 @@ currentEpoch = _currentEpoch;
 
 ```
 
+or 
+
+```
+currentEpoch = block.timestamp / epochDuration;
+
+```
+

@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "Bauer",
+  "risk": "3",
+  "title": "In the duration of one epoch currentMintAmount and currentRedeemAmount doesn't decrease the amount that was used in the requestRedemption",
+  "issueId": 119,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/119"
+}

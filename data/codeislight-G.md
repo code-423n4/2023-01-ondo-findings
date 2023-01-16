@@ -38,3 +38,18 @@ to:
 
     mapping(uint256 => Info) public infoPerEpoch;
 ```
+
+2. CashManager requestManager needs to check if there is any fees for feesInCollateral before transferring.
+
+```
+    function requestMint(uint256 collateralAmountIn)
+	…
+        uint256 feesInCollateral = _getMintFees(collateralAmountIn);
+        ...
+        if (feesInCollateral > 0)
+            collateral.safeTransferFrom(
+                msg.sender,
+                feeRecipient,
+                feesInCollateral
+            );
+```

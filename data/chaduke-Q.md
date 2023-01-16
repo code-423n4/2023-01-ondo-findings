@@ -60,3 +60,13 @@ Zero address check is needed for ``_assetRecipient``  to ensure not losing fund 
 GA12. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L306
 This line should be deleted, otherwise it is not consistent with the event ``MintExchangeRateCheckFailed``. 
 
+GA13. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L547
+Zero amount check for ``_epochDuration`` is needed.
+
+GA14. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L596
+Zero amount check for ``_mintLimit`` is needed.
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L610
+Zero amount check for ``_RedeemLimit`` is needed.
+
+

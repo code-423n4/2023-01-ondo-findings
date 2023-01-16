@@ -77,7 +77,48 @@ function multiexcall(
 
 ```
 
+## 3. Use Two-Step Transfer Pattern for important contract change
+Contracts implementing access control's, e.g. owner, should consider implementing a Two-Step Transfer pattern.
+Otherwise it's possible that the role mistakenly transfers ownership to the wrong address, resulting in a loss of the role.
 
+CashManager.sol
+```
+  function setFeeRecipient(
+    address _feeRecipient
+  ) external override onlyRole(MANAGER_ADMIN) {
+    address oldFeeRecipient = feeRecipient;
+    feeRecipient = _feeRecipient;
+    emit FeeRecipientSet(oldFeeRecipient, _feeRecipient);
+  }
+
+  function setAssetRecipient(
+    address _assetRecipient
+  ) external override onlyRole(MANAGER_ADMIN) {
+    address oldAssetRecipient = assetRecipient;
+    assetRecipient = _assetRecipient;
+    emit AssetRecipientSet(oldAssetRecipient, _assetRecipient);
+  }
+
+  function setAssetSender(
+    address newAssetSender
+  ) external onlyRole(MANAGER_ADMIN) {
+    address oldAssetSender = assetSender;
+    assetSender = newAssetSender;
+    emit AssetSenderSet(oldAssetSender, newAssetSender);
+  }
+
+
+OndoPriceOracle.sol
+
+92: ```function setFTokenToCToken()```
+106: ```function setOracle()```
+
+OndoPriceOracleV2.sol
+145: ```function setFTokenToOracleType()```
+182: ```function setOracle()```
+194: ```function setFTokenToCToken()```
+233: ```function setFTokenToChainlinkOracle()```
+```
 
 
 

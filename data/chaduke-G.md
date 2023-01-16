@@ -83,4 +83,7 @@ G12. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471
 uint dstTokensNew = accountTokens[dst] + tokens;
 ```
 
+G13. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cToken/CTokenModified.sol#L937-L940
+No need to check this since seizeInternal() will revert with underflow when necessary. 
+
 

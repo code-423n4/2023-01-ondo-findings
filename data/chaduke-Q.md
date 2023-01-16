@@ -48,3 +48,13 @@ currentEpoch = block.timestamp / epochDuration;
 
 ```
 
+GA9. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L170-L172
+Zero amount check need to be performed for these three arguments. 
+
+GA10. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L455
+Zero address check is needed for ``_feeReceipient``  to ensure not losing fund to zero address.
+
+GA11. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L465-L471
+Zero address check is needed for ``_assetRecipient``  to ensure not losing fund to zero address.
+
+

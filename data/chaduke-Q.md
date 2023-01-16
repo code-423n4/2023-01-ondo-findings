@@ -1,4 +1,5 @@
 GA1. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cToken/CTokenModified.sol#L576-L587
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cToken/CTokenModified.sol#L584-L587
 We need to check that only one of ``redeemTokensIn`` and ``redeemAmountIn`` is greater than zero, and the other is equal to zero.
 ```
 require(
@@ -20,4 +21,7 @@ The documentation should be "/* If repayAmount == max, repayAmount = accountBorr
 GA4: https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cToken/CTokenModified.sol#L94
 Zero amount check for ``tokens`` is needed.
 
+
+GA5. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cToken/CTokenModified.sol#L479
+Zero amount check for ``mintAmount`` is needed.
 

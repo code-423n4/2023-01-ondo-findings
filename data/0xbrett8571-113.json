@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "0xbrett8571",
+  "risk": "2",
+  "title": "`_getKYCStatus()` function does not check if the passed address is a valid address and could potentially allow an attacker to check the KYC status of arbitrary addresses, potentially exposing sensitive information.",
+  "issueId": 113,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/113"
+}

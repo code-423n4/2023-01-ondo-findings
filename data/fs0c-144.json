@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "fs0c",
+  "risk": "2",
+  "title": "Unbounded loop in request for redemptions can DOS _processRedemption for an epoch.",
+  "issueId": 144,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/144"
+}

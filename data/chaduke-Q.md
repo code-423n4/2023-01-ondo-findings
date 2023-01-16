@@ -66,7 +66,11 @@ Zero amount check for ``_epochDuration`` is needed.
 GA14. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L596
 Zero amount check for ``_mintLimit`` is needed.
 
+GA15.
 https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L610
 Zero amount check for ``_RedeemLimit`` is needed.
 
+GA16. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L803-L809
+Zero address check for ``newAssetSender`` is needed.
+ 
 

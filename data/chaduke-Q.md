@@ -75,3 +75,9 @@ Zero address check for ``newAssetSender`` is needed.
  
 GA17. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L949
 We need to check that ``msg.value = exCallData[0].value+exCallData[1].value...+exCallData[CallData.length-1].value``. 
+
+GA18. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/OndoPriceOracle.sol#L80
+A range check for ``price`` would be appropriate to prevent price manipulation by a malicous/compromised owner.
+
+GA19. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/OndoPriceOracle.sol#L106
+Zero addess check for ``newOracle`` is needed. 

@@ -6,6 +6,8 @@ uint dstTokensNew = accountTokens[dst] + tokens;
 ```
 
 G2. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cToken/CTokenModified.sol#L182-L190
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cCash/CTokenCash.sol#L182-L190
+
 No need to introduce ``src`` to save gas:
 ```
  function approve(
@@ -74,4 +76,11 @@ G11.https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471e
 totalReservesNew = totalReserves + actualAddAmount;
 
 ```
+
+G12. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cToken/CTokenModified.sol#L123
+ Enclosing this inside unchecked can save gas since overflow is impossible here.
+```
+uint dstTokensNew = accountTokens[dst] + tokens;
+```
+
 

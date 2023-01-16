@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "0xbrett8571",
+  "risk": "3",
+  "title": "Invalid Interface Implementation Check for KYC Registry Address in _setKYCRegistry() Function.",
+  "issueId": 112,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/112"
+}

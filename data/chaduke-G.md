@@ -98,3 +98,15 @@ if (exchangeRate > lastSetMintExchangeRate) {
 }
 
 ```
+
+G15. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L864-L868
+Use if-else rather than if-else-if can save gas here.
+```
+if (balance < previousBalance) {
+      redemptionInfoPerEpoch[epoch].totalBurned -= previousBalance - balance;
+    }
+else{ 
+      redemptionInfoPerEpoch[epoch].totalBurned += balance - previousBalance;
+    }
+```
+

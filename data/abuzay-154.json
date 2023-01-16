@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "abuzay",
+  "risk": "2",
+  "title": "Disabled Initializer in ERC20 Contract, leading to Uninitialized variables and potential issues in the smart contract.",
+  "issueId": 154,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/154"
+}

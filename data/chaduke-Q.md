@@ -25,3 +25,11 @@ Zero amount check for ``tokens`` is needed.
 GA5. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cToken/CTokenModified.sol#L479
 Zero amount check for ``mintAmount`` is needed.
 
+GA6. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cCash/CTokenInterfacesModifiedCash.sol#L2
+Lock all contracts at the most recent version of solidity 0.8.17.
+
+GA7. https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenInterfacesModifiedCash.sol#L2
+The name of the file is not consistent with the name of the contract. Also, ``CTokenInterfacesModifiedCash.sol`` is misleading if it is NOT an interface.
+
+GA8. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cCash/CTokenInterfacesModifiedCash.sol#L115
+There should be a way to change ``protocolSeizeShareMantissa``. 

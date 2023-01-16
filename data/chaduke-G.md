@@ -59,3 +59,11 @@ Not reading the state variable ``pendingAdmin`` can save gas, we know it is addr
 ```
 emit NewPendingAdmin(oldPendingAdmin, address(0));
 ```
+
+G10. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cCash/CTokenCash.sol#L1281
+Enclosing this inside unchecked can save gas since underflow is impossible due to previous check.
+```
+
+totalReservesNew = totalReserves - reduceAmount;
+
+```

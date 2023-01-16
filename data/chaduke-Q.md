@@ -57,4 +57,6 @@ Zero address check is needed for ``_feeReceipient``  to ensure not losing fund t
 GA11. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L465-L471
 Zero address check is needed for ``_assetRecipient``  to ensure not losing fund to zero address.
 
+GA12. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L306
+This line should be deleted, otherwise it is not consistent with the event ``MintExchangeRateCheckFailed``. 
 

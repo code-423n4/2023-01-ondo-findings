@@ -67,3 +67,11 @@ Enclosing this inside unchecked can save gas since underflow is impossible due t
 totalReservesNew = totalReserves - reduceAmount;
 
 ```
+
+G11.https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cCash/CTokenCash.sol#L1222
+ Enclosing this inside unchecked can save gas since overflow is impossible here.
+```
+totalReservesNew = totalReserves + actualAddAmount;
+
+```
+

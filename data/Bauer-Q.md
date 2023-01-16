@@ -107,6 +107,12 @@ CashManager.sol
     emit AssetSenderSet(oldAssetSender, newAssetSender);
   }
 
+  function setKYCRegistry(
+    address _kycRegistry
+  ) external override onlyRole(MANAGER_ADMIN) {
+    _setKYCRegistry(_kycRegistry);
+  }
+
 
 OndoPriceOracle.sol
 

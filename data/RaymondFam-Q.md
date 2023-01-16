@@ -100,6 +100,11 @@ Here are some of the contract instances entailed:
 [File: cErc20ModifiedDelegator.sol#L9-L134](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cErc20ModifiedDelegator.sol#L9-L134)
 [File: OndoPriceOracle.sol#L21-L29](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/OndoPriceOracle.sol#L21-L29)
 [File: IOndoPriceOracle.sol#L18-L25](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/IOndoPriceOracle.sol#L18-L25)
+[File: CCash.sol#L6-L8](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CCash.sol#L6-L8)
+[File: OndoPriceOracleV2.sol#L22-L36](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/OndoPriceOracleV2.sol#L22-L36)
+[File: CTokenInterfacesModifiedCash.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenInterfacesModifiedCash.sol)
+[File: cErc20ModifiedDelegator.sol#L9-L134](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cErc20ModifiedDelegator.sol#L9-L134)
+[File: cErc20ModifiedDelegator.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cErc20ModifiedDelegator.sol)
 
 ## Unspecific compiler version pragma
 For some source-units the compiler version pragma is very unspecific, i.e. ^0.5.12, ^0.8.10 etc. While this often makes sense for libraries to allow them to be included with multiple different versions of an application, it may be a security risk for the actual application implementation itself. A known vulnerable compiler version may accidentally be selected or security tools might fall-back to an older compiler version ending up actually checking a different EVM compilation that is ultimately deployed on the blockchain.
@@ -147,6 +152,18 @@ Some interfaces in the code bases are named without the prefix `I` that could ca
 - interface PriceOracle {
 + interface IPriceOracle {
 ```
+[File: CCash.sol#L6](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CCash.sol#L6)
+
+```diff
+- interface CompLike {
++ interface ICompLike {
+```
+All other instances entailed:
+
+[File: OndoPriceOracleV2.sol#L22-L30](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/OndoPriceOracleV2.sol#L22-L30)
+[File: cErc20ModifiedDelegator.sol#L9](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cErc20ModifiedDelegator.sol#L9)
+[File: cErc20ModifiedDelegator.sol#L144](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cErc20ModifiedDelegator.sol#L144)
+
 ## Non-compliant contract layout with Solidity's Style Guide
 According to Solidity's Style Guide below:
 
@@ -185,3 +202,81 @@ Here are the three instances unanimously using the same/identical function logic
       require(success, "Call Failed");
       results[i] = ret;
 ```
+## `uint256` over `uint`
+Across the codebase, there are numerous instances of uint, as opposed to uint256. In favor of explicitness, consider replacing all instances of uint with uint256.
+
+Here are some of the contract instances entailed:
+
+[File: JumpRateModelV2.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/JumpRateModelV2.sol)
+[File: CCash.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CCash.sol)
+
+## Imprecise block time
+Since resorting to POS, the Ethereum average block time is hardly 12 seconds according to [the daily ycharts](https://ycharts.com/indicators/ethereum_average_block_time#:~:text=Basic%20Info,8.72%25%20from%20one%20year%20ago.). 12 seconds per block only happens when no validator(s) is/are missing any slot(s) or turn(s) idling. For this reason, `baseRatePerBlock`, `multiplierPerBlock`, and `jumpMultiplierPerBlock` tend to be always slightly lesser than their actual values. Consider switching to precise time units in seconds if possible.
+
+[File: JumpRateModelV2.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/JumpRateModelV2.sol)
+
+```solidity
+29:  uint public constant blocksPerYear = 2628000; // block.time == 12
+
+177:    baseRatePerBlock = baseRatePerYear.div(blocksPerYear);
+178:    multiplierPerBlock = (multiplierPerYear.mul(1e18)).div(
+179:      blocksPerYear.mul(kink_)
+180:    );
+181:    jumpMultiplierPerBlock = jumpMultiplierPerYear.div(blocksPerYear);
+```
+## Use `delete` to clear variables
+`delete a` assigns the initial value for the type to `a`. i.e. for integers it is equivalent to `a = 0`, but it can also be used on arrays, where it assigns a dynamic array of length zero or a static array of the same length with all elements reset. For structs, it assigns a struct with all members reset. Similarly, it can also be used to set an address to zero address or a boolean to false. It has no effect on whole mappings though (as the keys of mappings may be arbitrary and are generally unknown). However, individual keys and what they map to can be deleted: If `a` is a mapping, then `delete a[x]` will delete the value stored at x.
+
+The delete key better conveys the intention and is also more idiomatic.
+
+For instance, the `a = false` instance below may be refactored as follows:
+
+[File: KYCRegistry.sol#L181](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/kyc/KYCRegistry.sol#L181)
+
+```diff
+-      kycState[kycRequirementGroup][addresses[i]] = false;
++      kycState[kycRequirementGroup][addresses[i]] = false;
+```
+## More robust sanity check
+A sanity check was performed on `underlying_` in `initialize()` of CCash.sol and CErc20.sol. Consider refactoring the code line entailed below just in case `totalSupply()` would not revert on failure:
+
+[File: CCash.sol#L53-L55](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CCash.sol#L53-L55)   
+[File: CErc20.sol#L53-L55](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cToken/CErc20.sol#L53-L55)
+
+```diff
+    // Set underlying and sanity check it
+    underlying = underlying_;
+-    EIP20Interface(underlying).totalSupply();
++    require(EIP20Interface(underlying).totalSupply() != 0);
+```
+## Time Units
+According to:
+
+https://docs.soliditylang.org/en/v0.8.14/units-and-global-variables.html
+
+suffixes like `seconds`, `minutes`, `hours`, `days` and `weeks` after literal numbers can be used to specify units of time where seconds are the base unit and units are considered naively in the following way:
+
+1 == 1 seconds
+1 minutes == 60 seconds
+1 hours == 60 minutes
+1 days == 24 hours
+1 weeks == 7 days
+
+To avoid human error while making the assignment more verbose, the following constant declarations may respectively be rewritten as:
+
+[File: OndoPriceOracleV2.sol#L77](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/OndoPriceOracleV2.sol#L77)
+
+```diff
+-  uint256 public maxChainlinkOracleTimeDelay = 90000; // 25 hours
++  uint256 public maxChainlinkOracleTimeDelay = 25 hours;
+```
+## Valid price could include zero value
+in `getChainlinkOraclePrice()` of OndoPriceOracleV2.sol, `answer == 0`, i.e. a meaningless zero scaled price could be returned. Consider having the affected code refactored as follows:
+
+[File: OndoPriceOracleV2.sol#L297](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/OndoPriceOracleV2.sol#L297)
+
+```diff
+-    require(answer >= 0, "Price cannot be negative");
++    require(answer > 0, "Price cannot be negative or zero");
+```
+Better yet, set a low boundary to the lowest price acceptable to handle edge cases entailing dusts in very low wei.

@@ -33,3 +33,11 @@ The name of the file is not consistent with the name of the contract. Also, ``CT
 
 GA8. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cCash/CTokenInterfacesModifiedCash.sol#L115
 There should be a way to change ``protocolSeizeShareMantissa``. 
+
+GA8. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L168
+This line is either unnecessary since it does nothing or it is a typo that need to be revised as follows:
+```
+currentEpoch = _currentEpoch;
+
+```
+

@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "prc",
+  "risk": "2",
+  "title": "Admin/owner role lockout possible",
+  "issueId": 282,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/282"
+}

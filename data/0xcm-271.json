@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "0xcm",
+  "risk": "3",
+  "title": "`MintExchangeRate` can change by admin any time, `claimMint()` allow claim for anyone can lead to a front-run attack when a wrong `MintExchangeRate` been set",
+  "issueId": 271,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/271"
+}

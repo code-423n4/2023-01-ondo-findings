@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "joestakey",
+  "risk": "2",
+  "title": "`repayBorrowBehalf()` can be front-run, resulting in `caller` paying more than expected",
+  "issueId": 358,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/358"
+}

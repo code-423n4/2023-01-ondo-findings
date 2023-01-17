@@ -9,7 +9,7 @@
 - [The result of a function call should be cached rather than re-calling the function](#the-result-of-a-function-call-should-be-cached-rather-than-re-calling-the-function)
   - [CTokenCash.sol.liquidateBorrowFresh(): getBlockNumber() should be cached](#ctokencashsolliquidateborrowfresh-getblocknumber-should-be-cached)
   - [CTokenModified.sol.liquidateBorrowFresh(): getBlockNumber() should be cached](#ctokenmodifiedsolliquidateborrowfresh-getblocknumber-should-be-cached)
-- [Cache storage values in memory to minimize SLOADs](#cache-storage-values-in-memory-to-minimize-sloads)
+- [Cache the mapping values rather than fetch it every time](#cache-storage-values-in-memory-to-minimize-sloads)
   - [OndoPriceOracle.sol.getUnderlyingPrice(): fTokenToUnderlyingPrice\[fToken\] should be cached](#ondopriceoraclesolgetunderlyingprice-ftokentounderlyingpriceftoken-should-be-cached)
   - [OndoPriceOracleV2.sol.getUnderlyingPrice(): fTokenToUnderlyingPriceCap\[fToken\] should be cached](#ondopriceoraclev2solgetunderlyingprice-ftokentounderlyingpricecapftoken-should-be-cached)
   - [Use the cached value here](#use-the-cached-value-here)
@@ -262,10 +262,8 @@ File: /contracts/lending/tokens/cToken/CTokenModified.sol
 896:    }
 ```
 
-## Cache storage values in memory to minimize SLOADs
-The code can be optimized by minimizing the number of SLOADs.
+## Cache the mapping values rather than fetch it every time
 
-SLOADs are expensive (100 gas after the 1st one) compared to MLOADs/MSTOREs (3 gas each). Storage values read multiple times should instead be cached in memory the first time (costing 1 SLOAD) and then read from this cache to avoid multiple SLOADs.
 
 https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/OndoPriceOracle.sol#L61-L72
 ### OndoPriceOracle.sol.getUnderlyingPrice(): fTokenToUnderlyingPrice[fToken] should be cached

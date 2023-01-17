@@ -1,6 +1,38 @@
 ## Low
 
-###
+### KYC can be removed while user still have fund in the protocol
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/kyc/KYCRegistry.sol#L169-L184
+
+```solidity
+  /**
+   * @notice Remove addresses from KYC list
+   *
+   * @param kycRequirementGroup KYC group associated with `addresses`
+   * @param addresses           List of addresses to revoke KYC'd status
+   */
+  function removeKYCAddresses(
+    uint256 kycRequirementGroup,
+    address[] calldata addresses
+  ) external onlyRole(kycGroupRoles[kycRequirementGroup]) {
+    uint256 length = addresses.length;
+    for (uint256 i = 0; i < length; i++) {
+      kycState[kycRequirementGroup][addresses[i]] = false;
+    }
+    emit KYCAddressesRemoved(msg.sender, kycRequirementGroup, addresses);
+  }
+```
+
+Since function like claimMint and transfer require KYC, user fund might be stuck
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L241-L244
+
+```solidity
+  function claimMint(
+    address user,
+    uint256 epochToClaim
+  ) external override updateEpoch nonReentrant whenNotPaused checkKYC(user) {
+```
 
 ## Non-Critical
 

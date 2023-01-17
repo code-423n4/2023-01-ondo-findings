@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "betweenETHlines",
+  "risk": "2",
+  "title": "`CashKycSender` inherits non-upgradeable contracts (missing `gap`)",
+  "issueId": 223,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/223"
+}

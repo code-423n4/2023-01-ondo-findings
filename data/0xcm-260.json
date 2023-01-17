@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "0xcm",
+  "risk": "2",
+  "title": "`MintFees` can change by admin any time, lead to user may spend more fee than expected",
+  "issueId": 260,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/260"
+}

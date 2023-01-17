@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "0x5rings",
+  "risk": "2",
+  "title": "_processRedemption would revert if quantityBurned is zero. (Division by zero would brick completeRedemptions)",
+  "issueId": 211,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/211"
+}

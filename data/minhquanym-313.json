@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "minhquanym",
+  "risk": "2",
+  "title": "Attacker can spam mint and redeem to DOS others if mintFee = 0",
+  "issueId": 313,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/313"
+}

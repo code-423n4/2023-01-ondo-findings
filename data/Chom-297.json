@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "Chom",
+  "risk": "2",
+  "title": "Allowance isn't reduced on transfer if it is type(uint).max",
+  "issueId": 297,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/297"
+}

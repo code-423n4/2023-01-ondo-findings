@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "0xbrett8571",
+  "risk": "3",
+  "title": "Unrestricted `ComptrollerInterface` and `InterestRateModel` Contract Changes by Admin and \"PendingAdmin\" leading to Loss of Funds for Users",
+  "issueId": 253,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/253"
+}

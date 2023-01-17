@@ -16,3 +16,11 @@ Code: https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e647
 
 
 Mitigation: fix the pragma version to >= 0.8.X
+
+--- 
+
+zero address check on comptroller
+
+code: https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/compound/Comptroller.sol#L125-L126
+
+Mitigation: check if _admin != address(0)

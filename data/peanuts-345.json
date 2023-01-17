@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "peanuts",
+  "risk": "2",
+  "title": "MintLimit can be changed before the epoch ends",
+  "issueId": 345,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/345"
+}

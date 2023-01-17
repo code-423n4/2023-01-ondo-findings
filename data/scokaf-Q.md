@@ -59,7 +59,6 @@ https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694
 
 
 
-
 ## Tools Used
 
 Manual Analysis
@@ -68,4 +67,38 @@ Manual Analysis
 
 Replace 2628000 with 2_628_000
 Replace 90000 with 90_000
+
+# Number 3: Imports placed before pragma directive
+
+Vulnerability details
+
+## Impact
+
+It is a norm to declare the pragma version for example pragma solidity 0.8.17; before adding imports used in a solidity smart contract. In a list of contracts, the imports are added before the pragma solidity version. For ease of readability and as a norm, the pragma directive should be added before the imports in a solidity smart contract.
+
+## Proof of Concept
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/kyc/KYCRegistryClientConstructable.sol#L17  
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/kyc/KYCRegistryClient.sol#L17 
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/kyc/KYCRegistryClient.sol#L18 
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/kyc/KYCRegistryClientInitializable.sol#L17 
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/kyc/KYCRegistryClientInitializable.sol#L18 
+
+
+## Tools Used
+
+Manual Analysis
+
+## Recommended Mitigation Steps
+
+Add pragma solidity version before adding imports in contract e.g:
+
+pragma solidity 0.8.16;
+
+import "contracts/cash/kyc/KYCRegistryClient.sol";
+
 

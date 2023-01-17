@@ -8,16 +8,7 @@ consider add a zero-value check in setEpochDuration function to make sure reachi
 
 ## mintAmount can be higher than mintLimit after setMintLimit during ongoing epoch 
 
-It's possible that admin set a value for mintLimit that is lower than mintAmount and this isn't a valid state ( we know that mintAmount should not exceed mintLimit and may affect your calculations ) 
+It's possible that admin set a value for mintLimit that is lower than mintAmount and this isn't a valid state ( we know that mintAmount should not exceed mintLimit and may affect your calculations ) .
 I recommend use newMintLimit for next epoch and not change mintLimit of an ongoing epoch also you can add a check to prevent this .
 
 https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L596-L600
-
-## mintAmount can't reach mintLimit 
-
-the following line checks that requested mint amount doesn't exceeds the current limit but it also prevents mintAmount to be equal to mintLimit , Let's say mintLimit is equal to 100 and mintAmount is 50 and we want to mint another 50 cash tokens which is a valid operation but due to following check it's not possible . 
-
-https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L626
-
-you can use this condition instead to fix it : collateralAmountIn >= mintLimit - currentMintAmount .
- 

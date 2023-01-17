@@ -81,3 +81,9 @@ A range check for ``price`` would be appropriate to prevent price manipulation b
 
 GA19. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/OndoPriceOracle.sol#L106
 Zero addess check for ``newOracle`` is needed. 
+
+GA20. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L641-L650
+The name is very misleading, better change it to ``_updateCurrentRedeemAmountUnderLimit()``.
+
+GA21. https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L625-L631
+This name is also very misleading, better change it to ``_updateCurrentMintAmountUnderLimit()``. 

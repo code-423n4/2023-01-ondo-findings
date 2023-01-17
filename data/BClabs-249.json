@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "BClabs",
+  "risk": "2",
+  "title": "OracleV2 will not work for tokens with over 18 decimals",
+  "issueId": 249,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/249"
+}

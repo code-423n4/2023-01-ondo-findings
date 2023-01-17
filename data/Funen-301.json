@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "Funen",
+  "risk": "3",
+  "title": "Incorrect Authorization in setPendingRedemptionBalance function can lead receiving more collateral",
+  "issueId": 301,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/301"
+}

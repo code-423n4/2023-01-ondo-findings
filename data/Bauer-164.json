@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "Bauer",
+  "risk": "2",
+  "title": "Native funds can be lost by multiexcall() as msg.value isn't synchronized with exCallData value",
+  "issueId": 164,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/164"
+}

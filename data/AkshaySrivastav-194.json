@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "AkshaySrivastav",
+  "risk": "2",
+  "title": "`CashManager.lastSetMintExchangeRate` function unintentionally gives pausing rights to `SETTER_ADMIN` role.",
+  "issueId": 194,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/194"
+}

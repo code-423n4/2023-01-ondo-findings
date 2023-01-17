@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "peanuts",
+  "risk": "2",
+  "title": "OndoPriceOracleV2 may still return a stale price because the value of maxChainlinkOracleTimeDelay is too high",
+  "issueId": 206,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/206"
+}

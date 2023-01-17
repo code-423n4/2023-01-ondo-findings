@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "BClabs",
+  "risk": "2",
+  "title": "If collateral have over 18 decimals, the protocol will break",
+  "issueId": 227,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/227"
+}

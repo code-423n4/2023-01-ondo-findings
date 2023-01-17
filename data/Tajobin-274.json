@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "Tajobin",
+  "risk": "3",
+  "title": "`exchangeRateDeltaLimit` can be exceeded with overrideExchangeRate() and remain unpaused",
+  "issueId": 274,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/274"
+}

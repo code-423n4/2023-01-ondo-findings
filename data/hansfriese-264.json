@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "hansfriese",
+  "risk": "2",
+  "title": "Collaterals with decimals over than 18 can not be used",
+  "issueId": 264,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/264"
+}

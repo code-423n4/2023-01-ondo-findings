@@ -85,6 +85,7 @@ https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/OndoPrice
 
 code snippet:-
 https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/OndoPriceOracleV2.sol#L293
+https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenCash.sol#L46
 
 ## 8.Expressions that cannot be overflowed can be unchecked :-
 
@@ -97,3 +98,11 @@ https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.
 code snippet:-
 https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol#L630
 https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol#L649
+
+## 10 . Checking msg.sender to not be zero address is redundant
+
+There is an instance where msg.sender is checked not to be zero address. This check is redundant as no private key is known for this address, hence there can be no transactions coming from the zero address. The following diff removes this redundant check.
+
+code snippet:-
+https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenCash.sol#L1087
+https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cToken/CTokenModified.sol#L1090

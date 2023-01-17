@@ -235,7 +235,7 @@ For instance, the `a = false` instance below may be refactored as follows:
 
 ```diff
 -      kycState[kycRequirementGroup][addresses[i]] = false;
-+      kycState[kycRequirementGroup][addresses[i]] = false;
++      delete  kycState[kycRequirementGroup][addresses[i]];
 ```
 ## More robust sanity check
 A sanity check was performed on `underlying_` in `initialize()` of CCash.sol and CErc20.sol. Consider refactoring the code line entailed below just in case `totalSupply()` would not revert on failure:

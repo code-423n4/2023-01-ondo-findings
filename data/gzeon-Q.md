@@ -45,3 +45,15 @@ https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694
     emit KYCAddressesRemoved(msg.sender, kycRequirementGroup, addresses);
   }
 ```
+
+### Manager can steal fund from the contract
+
+This allow manager to execute arbitrary call, including transferring token in the contract.
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L962-L964
+
+```solidity
+      (bool success, bytes memory ret) = address(exCallData[i].target).call{
+        value: exCallData[i].value
+      }(exCallData[i].data);
+```

@@ -8,3 +8,11 @@ Code: https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e647
 
 Mitigation:
 - include nonce and chainID to the structHash
+
+--- 
+Inconsistent use of pragma:
+pragma solidity 0.6.12; // @audit - old pragma, upgrade >= 0.8.X (and fixed the version no floating)
+Code: https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/OndoPriceOracle.sol#L15-L16
+
+
+Mitigation: fix the pragma version to >= 0.8.X

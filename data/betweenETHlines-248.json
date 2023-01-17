@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "betweenETHlines",
+  "risk": "2",
+  "title": "`sanctionsList` is immutable and can never be changed",
+  "issueId": 248,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/248"
+}

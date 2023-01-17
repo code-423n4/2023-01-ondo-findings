@@ -15,14 +15,14 @@ When retrieving data from a `storage` location, assigning the data to a `memory`
 
 Here are some instances of this issue:
 
-File: `CTokenCash.sol` ([Line 221](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenCash.sol#L221), [Line 344](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenCash.sol#L344), [Line 566](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenCash.sol#L566), [Line 590](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenCash.sol#L590), [Line 1027](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenCash.sol#L1027))
+File: `CTokenCash.sol` ([Line 221](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenCash.sol#L221), [Line 433](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenCash.sol#L433), [Line 506](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenCash.sol#L506), [Line 590](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenCash.sol#L590), [Line 1027](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CTokenCash.sol#L1027))
 
 ```solidity
 221:    Exp memory exchangeRate = Exp({mantissa: exchangeRateCurrent()});
 ...
 433:    Exp memory simpleInterestFactor = mul_(
 ...
-566:    Exp memory exchangeRate = Exp({mantissa: exchangeRateStoredInternal()});
+506:    Exp memory exchangeRate = Exp({mantissa: exchangeRateStoredInternal()});
 ...
 590:    Exp memory exchangeRate = Exp({mantissa: exchangeRateStoredInternal()});
 ...
@@ -72,3 +72,12 @@ For example, the following instances of `++i/i++` could be `unchecked`:
 - File: `CashManager.sol` [Line 786](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol#L786)
 - File: `CashManager.sol` [Line 933](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol#L933)
 - File: `CashManager.sol` [Line 961](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol#L961)
+
+## 6. Strict equalities cost less gas than non-strict
+
+Strict equalities (`<`, `>`) cost less gas than non-strict (`<=`, `>=`). This is because strict equality uses fewer opcodes.
+
+Here are some instances of this issue:
+
+- File: `CashManager.sol` [Line 288-290](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol#L288-L290)
+- File: `CashManager.sol` [Line 413](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol#L413)

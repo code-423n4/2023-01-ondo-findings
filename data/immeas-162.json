@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "immeas",
+  "risk": "2",
+  "title": "user can mint CASH tokens without fee before `setMintFee` is called",
+  "issueId": 162,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/162"
+}

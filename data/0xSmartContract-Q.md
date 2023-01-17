@@ -44,8 +44,9 @@ Total 10 issues
 | [N-23] |Implement some type of version counter that will be incremented automatically for contract upgrades |6 |
 | [N-24] |Change the way Openzeppelin codes are used in the project|18 |
 | [N-25] |Floating pragma|8 |
+| [N-26] |It is confusing to assign the same value to the `currentEpoch` variable |1 |
 
-Total 25 issues
+Total 26 issues
 
 
 ### Suggestions
@@ -1498,6 +1499,41 @@ contracts/lending/tokens/cToken/CTokenModified.sol:
 
 **Recommendation:**
 Lock the pragma version and also consider known bugs (https://github.com/ethereum/solidity/releases) for the compiler version that is chosen.
+
+
+### [N-26] It is confusing to assign the same value to the `currentEpoch` variable
+
+The `currentEpoch` variable is also set with the same value in the constructor, which means redefining the same value and confusing
+
+If the same value is incorrectly set instead of another value, this Medium finding into an error class
+
+
+```solidity
+contracts/cash/CashManager.sol:
+  125  
+  126:   /// @notice constructor
+  127:   constructor(
+  128:     address _collateral,
+  129:     address _cash,
+  130:     address managerAdmin,
+  131:     address pauser,
+  132:     address _assetRecipient,
+  133:     address _assetSender,
+  134:     address _feeRecipient,
+  135:     uint256 _mintLimit,
+  136:     uint256 _redeemLimit,
+  137:     uint256 _epochDuration,
+  138:     address _kycRegistry,
+  139:     uint256 _kycRequirementGroup
+  140:   ) KYCRegistryClientConstructable(_kycRegistry, _kycRequirementGroup) {
+
+  168:     currentEpoch = currentEpoch; //???
+
+  183:   }
+
+```
+
+
 
 ### [S-01] Project Upgrade and Stop Scenario should be
 

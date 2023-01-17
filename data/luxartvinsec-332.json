@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "luxartvinsec",
+  "risk": "2",
+  "title": "Unchecked call to `transferOwnership()` function in CashFactory contract",
+  "issueId": 332,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/332"
+}

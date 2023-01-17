@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "csanuragjain",
+  "risk": "2",
+  "title": "Signatures can be misused to reverify",
+  "issueId": 323,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/323"
+}

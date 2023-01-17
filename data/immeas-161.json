@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "immeas",
+  "risk": "2",
+  "title": "lack of `nonce` in kyc signature enables replay",
+  "issueId": 161,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/161"
+}

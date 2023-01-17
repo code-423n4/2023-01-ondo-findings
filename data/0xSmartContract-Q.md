@@ -12,8 +12,9 @@
 |[L-08]| No Storage Gap for `KYCRegistryClientInitializable`| 1 |
 |[L-09]| The nonReentrant modifier should occur before all other modifiers| 1 |
 |[L-10]| initialize() functions can be called by anybody| 4 |
+|[L-11]| Use `uint256` instead `uint` | 336 |
 
-Total 10 issues
+Total 11 issues
 
 
 ### Non-Critical Issues List
@@ -419,6 +420,21 @@ if (msg.sender != DEPLOYER_ADDRESS) {
             revert NotDeployer();
         }
 ```
+
+### [L-11] Use `uint256` instead `uint`
+
+Project use uint and uint256
+ 
+Number of uses:
+uint  = 336 results - 10 files
+uint256 = 305 results - 25 files
+
+
+Some developers prefer to use `uint256` because it is consistent with other uint data types, which also specify their size, and also because making the size of the data explicit reminds the developer and the reader how much data they've got to play with, which may help prevent or detect bugs.
+
+For example if doing ```bytes4(keccak('transfer(address, uint)’))```, you'll get a different method sig ID than ```bytes4(keccak('transfer(address, uint256)’))``` and smart contracts will only understand the latter when comparing method sig IDs
+
+
 
 ### [N-01] Insufficient coverage
 

@@ -20,4 +20,8 @@ https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.
 
 5.
 https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cToken/CTokenModified.sol#L53
-It could check a local variable 'initialExchangeRateMantissa_' instead of a storage variable 'initialExchangeRateMantissa'. 
+It could check a local variable 'initialExchangeRateMantissa_' instead of a storage variable 'initialExchangeRateMantissa'.
+
+6.
+https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/JumpRateModelV2.sol#L24
+'owner' could be made as immutable.

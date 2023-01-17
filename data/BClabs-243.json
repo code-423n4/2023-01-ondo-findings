@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "BClabs",
+  "risk": "2",
+  "title": "Mint claim gets saved in under the wrong epoch when setEpochDuration is called",
+  "issueId": 243,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/243"
+}

@@ -192,3 +192,15 @@ The deprecated file is inherited and used in the 3 factory files for their initi
 Suggested fix:
  
 It is recommended resorting to https://wizard.openzeppelin.com/ 
+
+## INTERFACES NOT NAMED WITH PREFIX `I`
+Throughout the code bases, some interfaces have been named without the prefix `I` that could cause confusion to developers and readers referencing/interacting with the protocol. 
+
+Here are some of the instances found.
+
+[cErc20ModifiedDelegator.sol#L9](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cErc20ModifiedDelegator.sol#L9)
+[OndoPriceOracle.sol#L21](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/OndoPriceOracle.sol#L21)
+[OndoPriceOracle.sol#L27](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/OndoPriceOracle.sol#L27)
+
+Suggested fix:
+It is recommended conforming to Solidity's naming conventions by having the instances renamed to `Ixxx`.

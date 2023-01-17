@@ -262,7 +262,7 @@ suffixes like `seconds`, `minutes`, `hours`, `days` and `weeks` after literal nu
 1 days == 24 hours
 1 weeks == 7 days
 
-To avoid human error while making the assignment more verbose, the following constant declarations may respectively be rewritten as:
+To avoid human error while making the assignment more verbose, the following variable may be rewritten as:
 
 [File: OndoPriceOracleV2.sol#L77](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/OndoPriceOracleV2.sol#L77)
 

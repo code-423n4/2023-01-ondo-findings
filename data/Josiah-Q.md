@@ -139,3 +139,56 @@ Depending on the EIP20Interface instance used, `totalSupply()` might not revert 
 Suggested fix:
 
 It is recommended making a check to ensure `EIP20Interface(underlying).totalSupply() > 0`. 
+
+## ZERO PRICE NOT EXCLUDED
+OndoPriceOracleV2.sol does not have zero price excluded when returning Chainlink oracle price in `getChainlinkOraclePrice()`. 
+
+Here is the specific instance found.
+
+[OndoPriceOracleV2.sol#L297](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/OndoPriceOracleV2.sol#L297)
+
+```
+    require(answer >= 0, "Price cannot be negative");
+```
+Suggested fix:
+
+It is recommended switching to the following require statement, serving also to save gas on an early revert:
+
+```
+    require(answer > 0, "Price cannot be negative");
+```
+## PRIVILEGED ROLE CHECK SHOULD BE DONE EARLY
+Access controlled functions should have caller check carried out from the beginning of the function logic just like a modifier would.
+
+Here are the 3 instances with identical/similar logic associated.
+
+[Cash.sol#L34-L39](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/token/Cash.sol#L34-L39)
+[CashKYCSenderReceiver.sol#L61-L66](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/token/CashKYCSenderReceiver.sol#L61-L66)
+[CashKYCSender.sol#L61-L66](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/token/CashKYCSender.sol#L61-L66)
+
+```
+    super._beforeTokenTransfer(from, to, amount);
+
+    require(
+      hasRole(TRANSFER_ROLE, _msgSender()),
+      "Cash: must have TRANSFER_ROLE to transfer"
+    );
+```
+Suggested fix:
+
+It is recommended moving/executing the require statement before `super._beforeTokenTransfer(from, to, amount)`.
+
+## AVOID USE OF DEPRECATED FILE
+As denoted in the links below:
+
+[OpenZeppelin ERC20PresetMinterPauser.sol](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/presets/ERC20PresetMinterPauser.sol#L26)
+[Ondo Finance ERC20PresetMinterPauserUpgradeable.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/external/openzeppelin/contracts-upgradeable/token/ERC20/ERC20PresetMinterPauserUpgradeable.sol#L27)
+
+```
+ * _Deprecated in favor of https://wizard.openzeppelin.com/[Contracts Wizard]._
+```
+The deprecated file is inherited and used in the 3 factory files for their initialization logic.
+
+Suggested fix:
+ 
+It is recommended resorting to https://wizard.openzeppelin.com/ 

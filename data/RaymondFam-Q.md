@@ -238,7 +238,7 @@ For instance, the `a = false` instance below may be refactored as follows:
 +      delete  kycState[kycRequirementGroup][addresses[i]];
 ```
 ## More robust sanity check
-A sanity check was performed on `underlying_` in `initialize()` of CCash.sol and CErc20.sol. Consider refactoring the code line entailed below just in case `totalSupply()` would not revert on failure:
+A sanity check was performed on `underlying` in `initialize()` of CCash.sol and CErc20.sol. Consider refactoring the code line entailed below just in case `totalSupply()` would not revert on failure:
 
 [File: CCash.sol#L53-L55](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CCash.sol#L53-L55)   
 [File: CErc20.sol#L53-L55](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cToken/CErc20.sol#L53-L55)

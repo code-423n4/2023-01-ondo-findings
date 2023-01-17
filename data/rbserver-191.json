@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "rbserver",
+  "risk": "3",
+  "title": "Malicious user can reuse the already-used but unexpired signature to add her or him back to KYC requirement group after her or his KYCed status is revoked",
+  "issueId": 191,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/191"
+}

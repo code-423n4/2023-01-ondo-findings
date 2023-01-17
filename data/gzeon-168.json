@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "gzeon",
+  "risk": "2",
+  "title": "MANAGER_ADMIN can frontrun user to charge fee up 99.99%",
+  "issueId": 168,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/168"
+}

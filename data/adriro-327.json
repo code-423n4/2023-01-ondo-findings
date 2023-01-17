@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "adriro",
+  "risk": "2",
+  "title": "KYC parameters can be changed in the KYC variants of the Cash token and lock users out of their funds",
+  "issueId": 327,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/327"
+}

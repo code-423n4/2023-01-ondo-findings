@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "BClabs",
+  "risk": "3",
+  "title": "MANAGER_ADMIN has the right to give or take any amount of user's tokens using setPendingMintBalance.",
+  "issueId": 235,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/235"
+}

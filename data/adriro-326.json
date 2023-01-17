@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "adriro",
+  "risk": "2",
+  "title": "KYC signature can be reused to regain KYC status",
+  "issueId": 326,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/326"
+}

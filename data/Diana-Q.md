@@ -161,7 +161,24 @@ File: contracts/lending/tokens/cToken/CTokenInterfacesModified.sol
 
 --------
 
-## 05 Non-library or interface files should use fixed compiler versions, not floating ones
+## 05 Adding a return statement when the function defines a named return variable, is redundant
+
+_There is 1 instance of this issue_
+
+https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/CashManager.sol
+
+```
+File: contracts/cash/CashManager.sol
+
+781-784: function _processRefund(
+    address[] calldata refundees,
+    uint256 epochToService
+  ) private returns (uint256 totalCashAmountRefunded) {
+```
+
+--------
+
+## 06 Non-library or interface files should use fixed compiler versions, not floating ones
 
 In the contracts, floating pragmas should not be used. Contracts should be deployed with the same compiler version and flags that they have been tested with thoroughly. Locking the pragma helps to ensure that contracts do not accidentally get deployed using, for example, an outdated compiler version that might introduce bugs that affect the contract system negatively.
 
@@ -262,7 +279,7 @@ File: contracts/lending/tokens/cToken/CTokenModified.sol
 
 ----------
 
-## 06 Use named imports instead of plain 'import file.sol'
+## 07 Use named imports instead of plain 'import file.sol'
 
 For instance, you use regular imports such as:
 
@@ -284,7 +301,7 @@ _There are 71 instances of this issue in the following In-scope contracts:_
 
 -------------
 
-## 07 Include return parameters in natspec comment
+## 08 Include return parameters in natspec comment
 
 It is recommended that Solidity contracts are fully annotated using NatSpec for all public interfaces (everything in the ABI). It is clearly stated in the Solidity official documentation. In complex projects such as Defi, the interpretation of all functions and their arguments and returns is important for code readability and auditability.
 
@@ -320,7 +337,7 @@ File: contracts/cash/factory/CashKYCSenderReceiverFactory.sol
 
 -----
 
-## 08 Use a more recent version of solidity
+## 09 Use a more recent version of solidity
 
 It's a best practice to use the latest compiler version.
 List of known compiler bugs and their severity can be found here: [https://etherscan.io/solcbuginfo](https://etherscan.io/solcbuginfo)
@@ -328,3 +345,4 @@ List of known compiler bugs and their severity can be found here: [https://ethe
 This issue exists in all the In-scope contracts
 
 ---------
+

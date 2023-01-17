@@ -72,3 +72,70 @@ Here is 1 specific instance found.
 Suggested fix:
 
 It is recommended using time units with exact seconds elapsed to eradicate the delta errors when determining [`baseRatePerBlock`, `multiplierPerBlock`, and `jumpMultiplierPerBlock`](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/JumpRateModelV2.sol#L177-L181).
+
+## MINTER_ROLE NOT GRANTED
+The factory deploy logic is missing with granting MINTER_ROLE to the guardian.
+
+Here are the 3 instances found.
+
+[CashFactory.sol#L89-L90](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashFactory.sol#L89-L90) 
+
+```
+    cashProxied.grantRole(DEFAULT_ADMIN_ROLE, guardian);
+    cashProxied.grantRole(PAUSER_ROLE, guardian);
+```
+[CashKYCSenderFactory.sol#L98-L99](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashKYCSenderFactory.sol#L98-L99)
+
+```
+    cashKYCSenderProxied.grantRole(DEFAULT_ADMIN_ROLE, guardian);
+    cashKYCSenderProxied.grantRole(PAUSER_ROLE, guardian);
+```
+[CashKYCSenderReceiverFactory.sol#L98-L99](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/factory/CashKYCSenderReceiverFactory.sol#L98-L99)
+
+```
+    cashKYCSenderReceiverProxied.grantRole(DEFAULT_ADMIN_ROLE, guardian);
+    cashKYCSenderReceiverProxied.grantRole(PAUSER_ROLE, guardian);
+```
+Suggested fix:
+
+It is recommended adding `grantRole(MINTER_ROLE, guardian)` to the function code block equipping the guardian with all three roles revoked by the factory contracts.  
+
+## STORAGE GAP FOR UPGRADEABLE CONTRACTS
+Consider adding a storage gap at the end of each upgradeable contract. In the event some contracts needed to inherit from them, there would not be an issue shifting down of storage in the inheritance chain. Generally, storage gaps are a novel way of reserving storage slots in a base contract, allowing future versions of that contract to use up those slots without affecting the storage layout of child contracts. If not, the variable in the child contract might be overridden whenever new variables are added to it. This storage collision could have unintended and vulnerable consequences to the child contracts.
+
+Here are the 3 contract instances found.
+
+[Cash.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/token/Cash.sol)
+[CashKYCSender.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/token/CashKYCSender.sol)
+[CashKYCSenderReceiver.sol](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/cash/token/CashKYCSenderReceiver.sol)
+
+Suggested fix:
+
+It is recommended adding the following code block at the end of the upgradeable contract:
+
+```
+    /**
+     * @dev This empty reserved space is put in place to allow future versions to add new
+     * variables without shifting down storage in the inheritance chain.
+     * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps
+     */
+    uint256[49] private __gap;
+```
+## SANITY CHECK THAT COULD SILENTLY FAIL
+A sanity check using `totalSupply()` was applied on the state variable, `underlying`, when initializing the money market in CCash.sol and CErc20.sol.
+
+Here is the identical logic associated with the 2 instances found.
+
+[CCash.sol#L53-L55](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cCash/CCash.sol#L53-L55)
+[CErc20.sol#L53-L55](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/tokens/cToken/CErc20.sol#L53-L55)
+
+```
+    // Set underlying and sanity check it
+    underlying = underlying_;
+    EIP20Interface(underlying).totalSupply();
+```
+Depending on the EIP20Interface instance used, `totalSupply()` might not revert on the wrong input address of `underlying_`.
+
+Suggested fix:
+
+It is recommended making a check to ensure `EIP20Interface(underlying).totalSupply() > 0`. 

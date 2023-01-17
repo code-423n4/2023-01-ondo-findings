@@ -134,5 +134,35 @@ Manual Analysis
 1. Don't use block.timestamp for a source of entropy and random number
 2. Use of trusted oracles
 
+# Number 5: Use of DelegateCall
+
+Vulnerability details
+
+## Impact
+
+Delegatecall is difficult to utilize, and its application or misinterpretation might have disastrous effects.
+
+Two considerations are necessary while utilizing delegatecall.
+
+context is preserved via delegatecall (storage, caller, etc...)
+The contract calling delegatecall and the contract being called must have the same storage configuration.
+
+
+
+## Proof of Concept
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/interfaces/IMulticall.sol#L26  
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/OndoPriceOracleV2.sol#L66 
+
+
+
+## Tools Used
+
+Manual Analysis
+
+## Recommended Mitigation Steps
+
+Use stateless Library
 
 

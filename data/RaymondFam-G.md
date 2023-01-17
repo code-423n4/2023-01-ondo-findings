@@ -211,7 +211,7 @@ Here are some of the instances entailed:
 
 433:    Exp memory simpleInterestFactor = mul_(
 
-566:    Exp memory exchangeRate = Exp({mantissa: exchangeRateStoredInternal()});
+506:    Exp memory exchangeRate = Exp({mantissa: exchangeRateStoredInternal()});
 
 590:    Exp memory exchangeRate = Exp({mantissa: exchangeRateStoredInternal()});
 

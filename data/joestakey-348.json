@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "joestakey",
+  "risk": "2",
+  "title": "Using block numbers can lead to incorrect interest calculation - due to empty slots",
+  "issueId": 348,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/348"
+}

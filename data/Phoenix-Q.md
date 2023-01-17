@@ -31,3 +31,6 @@ Making many external calls through iteration, even after `onlyGuardian` validati
 
 [CashKYCSenderReceiver.sol#L46](`https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/token/CashKYCSenderReceiver.sol#L46`)
 
+[CCash.sol#L30](`https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/tokens/cCash/CCash.sol#L30`)
+
+

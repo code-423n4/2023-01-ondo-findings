@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "minhquanym",
+  "risk": "3",
+  "title": "Redeemers will receive less collateral than expected if function `completeRedemptions()` is called with empty `refundees` list",
+  "issueId": 312,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/312"
+}

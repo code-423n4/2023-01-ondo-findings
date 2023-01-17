@@ -102,3 +102,37 @@ pragma solidity 0.8.16;
 import "contracts/cash/kyc/KYCRegistryClient.sol";
 
 
+# Number 4: Use of block.timestamp 
+
+Vulnerability details
+
+## Impact
+
+Some contracts use block.timestamp which can be problematic as Miners can alter block.timestamp with the following restrictions.
+
+It cannot bear a time stamp that is earlier than that of its parent.
+It won't be too long from now.
+
+## Proof of Concept
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/kyc/KYCRegistry.sol#L92 
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/OndoPriceOracleV2.sol#L294 
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L174 
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/cash/CashManager.sol#L584 
+
+
+
+## Tools Used
+
+Manual Analysis
+
+## Recommended Mitigation Steps
+
+1. Don't use block.timestamp for a source of entropy and random number
+2. Use of trusted oracles
+
+
+

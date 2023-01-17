@@ -1,3 +1,19 @@
+## 0. Zero price is considered valid
+
+In the following contract, `int answer` is required to be `>= 0`. However, this allows `int answer` to be zero, meaning a pointlessly scaled zero value could be returned.
+
+File: `OndoPriceOracleV2.sol` [Line 297](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/OndoPriceOracleV2.sol#L297)
+
+```solidity
+    require(answer >= 0, "Price cannot be negative");
+```
+
+Instead of the above, consider refactoring to:
+
+```solidity
+    require(answer > 0, "Price must be greater than zero");
+```
+
 ## 1. Use time units when applicable
 
 See this: [docs.soliditylang.org/en/v0.8.14/units-and-global-variables.html#time-units](https://docs.soliditylang.org/en/v0.8.14/units-and-global-variables.html#time-units)
@@ -108,19 +124,3 @@ Interfaces names should be prefixed with `I`. However, some interfaces are not f
 - File: [`JumpRateModelV2.sol`](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/JumpRateModelV2.sol) (entire contract)
 - File: `IOndoPriceOracle.sol` [Line 24](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/IOndoPriceOracle.sol#L24)
 - File: `IOndoPriceOracleV2.sol` [Line 24](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/IOndoPriceOracleV2.sol#L24)
-
-## 7. Zero price is considered valid
-
-In the following contract, `int answer` is required to be `>= 0`. However, this allows `int answer` to be zero, meaning a pointlessly scaled zero value could be returned.
-
-File: `OndoPriceOracleV2.sol` [Line 297](https://github.com/code-423n4/2023-01-ondo/blob/main/contracts/lending/OndoPriceOracleV2.sol#L297)
-
-```solidity
-    require(answer >= 0, "Price cannot be negative");
-```
-
-Instead of the above, consider refactoring to:
-
-```solidity
-    require(answer > 0, "Price must be greater than zero");
-```

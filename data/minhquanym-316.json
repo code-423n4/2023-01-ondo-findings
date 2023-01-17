@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "minhquanym",
+  "risk": "2",
+  "title": "Redeemers can reject receiving air-drop collateral token, make function `completeRedemptions()` failing and wasting gas of admin",
+  "issueId": 316,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/316"
+}

@@ -1,0 +1,8 @@
+{
+  "contest": 204,
+  "handle": "Walter",
+  "risk": "2",
+  "title": "User can request mint of all mintable tokens without owning collateral",
+  "issueId": 255,
+  "issueUrl": "https://github.com/code-423n4/2023-01-ondo-findings/issues/255"
+}

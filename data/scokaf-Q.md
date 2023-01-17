@@ -39,3 +39,33 @@ Manual Analysis
 ## Recommended Mitigation Steps
 
 Remove ^ in “pragma solidity ^0.8.10” and change it to “pragma solidity 0.8.10” to be consistent with the rest of the contracts.
+
+
+# Number 2: More Readable Constants
+
+
+Vulnerability details
+
+## Impact
+
+Some constant values are difficult to read at one time because they have a lot of 0's.
+Solidity allows _ to separate series of zero's
+
+## Proof of Concept
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/JumpRateModelV2.sol#L29
+
+https://github.com/code-423n4/2023-01-ondo/blob/f3426e5b6b4561e09460b2e6471eb694efdd6c70/contracts/lending/OndoPriceOracleV2.sol#L77 
+
+
+
+
+## Tools Used
+
+Manual Analysis
+
+## Recommended Mitigation Steps
+
+Replace 2628000 with 2_628_000
+Replace 90000 with 90_000
+
